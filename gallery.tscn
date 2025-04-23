@@ -1,0 +1,294 @@
+[gd_scene load_steps=37 format=3 uid="uid://c2cr6ebcc8s6g"]
+
+[ext_resource type="Script" uid="uid://cwb0wqk0jh337" path="res://player.gd" id="1_puatq"]
+[ext_resource type="Material" uid="uid://c7jp3n38i25ms" path="res://imports/wall_textures/bottomWallMaterial.tres" id="2_b3ixh"]
+[ext_resource type="PackedScene" uid="uid://b23jpkjufst2f" path="res://imports/basic_char.glb" id="2_keir4"]
+[ext_resource type="Material" uid="uid://trh55kw2ic27" path="res://imports/wall_textures/topWallMaterial.tres" id="3_pegut"]
+[ext_resource type="Material" uid="uid://cbqm8ljq2xg7k" path="res://imports/floor/floorMaterial.tres" id="4_mq4me"]
+[ext_resource type="Texture2D" uid="uid://dy7tu6otwidc1" path="res://texturas/Obras/descarga.jpg" id="5_bvpv7"]
+[ext_resource type="Texture2D" uid="uid://b1lipn3h2x6yx" path="res://texturas/1.jpg" id="6_l6m5p"]
+[ext_resource type="Texture2D" uid="uid://bx7th8m0eikti" path="res://texturas/Obras/cosecha.jpg" id="6_p1a2d"]
+[ext_resource type="Texture2D" uid="uid://do3nuywh2m3nv" path="res://texturas/Obras/vision2020.jpg" id="7_1hwuq"]
+[ext_resource type="Texture2D" uid="uid://bfxi0xjd2dwa8" path="res://texturas/Obras/vision20201.jpg" id="8_op3a4"]
+[ext_resource type="PackedScene" uid="uid://b7ixx2gpsvgx8" path="res://interface.tscn" id="9_fwtqy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3ocnd"]
+radius = 1.35608
+height = 11.5275
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ky5bf"]
+size = Vector3(59.8439, 2.23999, 232.752)
+
+[sub_resource type="QuadMesh" id="QuadMesh_dpesp"]
+material = ExtResource("2_b3ixh")
+size = Vector2(12, 232)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6m5p"]
+albedo_color = Color(0.972549, 0.972549, 0.960784, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_oais1"]
+material = ExtResource("3_pegut")
+size = Vector2(50, 232)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvpv7"]
+albedo_color = Color(0.839216, 0.839216, 0.839216, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1a2d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hwuq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op3a4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tw5dh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s08b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xwjxw"]
+albedo_texture = ExtResource("5_bvpv7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ngm4w"]
+material = SubResource("StandardMaterial3D_xwjxw")
+size = Vector2(18.87, 15.5)
+center_offset = Vector3(20, 10, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_reov4"]
+albedo_texture = ExtResource("5_bvpv7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngm4w"]
+albedo_texture = ExtResource("6_p1a2d")
+
+[sub_resource type="QuadMesh" id="QuadMesh_reov4"]
+material = SubResource("StandardMaterial3D_ngm4w")
+size = Vector2(12, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpg1v"]
+albedo_texture = ExtResource("6_p1a2d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4wds"]
+albedo_texture = ExtResource("7_1hwuq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_y1c87"]
+material = SubResource("StandardMaterial3D_n4wds")
+size = Vector2(3, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1c87"]
+albedo_texture = ExtResource("8_op3a4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mtbg1"]
+material = SubResource("StandardMaterial3D_y1c87")
+size = Vector2(3, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mne3"]
+albedo_texture = ExtResource("8_op3a4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rdsk"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_olf15"]
+material = ExtResource("4_mq4me")
+size = Vector2(60, 232)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gqrd"]
+albedo_color = Color(0.537011, 0.537011, 0.537011, 1)
+albedo_texture = ExtResource("6_l6m5p")
+
+[node name="Main" type="Node" groups=["gallery"]]
+
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera3D") groups=["gallery"]]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
+collision_layer = 3
+script = ExtResource("1_puatq")
+camera3D = NodePath("../Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.72172, 0)
+shape = SubResource("CapsuleShape3D_3ocnd")
+
+[node name="Pivot" type="Node3D" parent="Player"]
+
+[node name="Character" parent="Player/Pivot" instance=ExtResource("2_keir4")]
+
+[node name="CameraPivot" type="SpringArm3D" parent="Player"]
+transform = Transform3D(-1, 2.99003e-08, -8.21505e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, -4.35596, 15.58, -12.353)
+spring_length = -10.0
+
+[node name="Room" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 176.438)
+
+[node name="Derecha" type="StaticBody3D" parent="Room"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -29.6233, -1.95907, -83.4443)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Derecha"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.37, 0.024, 0)
+shape = SubResource("BoxShape3D_ky5bf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Derecha"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -7.286, -0.001, 0)
+mesh = SubResource("QuadMesh_dpesp")
+surface_material_override/0 = SubResource("StandardMaterial3D_l6m5p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/Derecha"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -38.06, 0, 0)
+mesh = SubResource("QuadMesh_oais1")
+surface_material_override/0 = SubResource("StandardMaterial3D_bvpv7")
+
+[node name="atras" type="StaticBody3D" parent="Room"]
+transform = Transform3D(1.88048e-15, -4.30204e-08, -0.260432, -0.984191, -4.30204e-08, 0, -4.30204e-08, 0.984191, -1.13838e-08, -0.0397797, -1.82149, -198.209)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/atras"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.37, 0.024, 0)
+shape = SubResource("BoxShape3D_ky5bf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/atras"]
+transform = Transform3D(1, 1.05879e-22, -3.55271e-15, -3.55271e-15, -4.37114e-08, 1, -1.27055e-21, -1, -4.37114e-08, -7.286, -0.00100136, 0)
+mesh = SubResource("QuadMesh_dpesp")
+surface_material_override/0 = SubResource("StandardMaterial3D_p1a2d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/atras"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -38.06, 0, 0)
+mesh = SubResource("QuadMesh_oais1")
+surface_material_override/0 = SubResource("StandardMaterial3D_1hwuq")
+
+[node name="Adelante" type="StaticBody3D" parent="Room"]
+transform = Transform3D(1.88048e-15, -4.30204e-08, 0.260432, -0.984191, -4.30204e-08, 0, 4.30204e-08, -0.984191, -1.13838e-08, -0.0397797, -1.82149, 32.2951)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Adelante"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.37, 0.024, 0)
+shape = SubResource("BoxShape3D_ky5bf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Adelante"]
+transform = Transform3D(1, 4.23516e-22, -3.55271e-15, -2.4869e-14, -4.37114e-08, 1, 1.69407e-21, -1, -4.37114e-08, -7.286, -0.00100708, 0)
+mesh = SubResource("QuadMesh_dpesp")
+surface_material_override/0 = SubResource("StandardMaterial3D_op3a4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/Adelante"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -38.06, 0, 0)
+mesh = SubResource("QuadMesh_oais1")
+surface_material_override/0 = SubResource("StandardMaterial3D_tw5dh")
+
+[node name="Izquierda" type="StaticBody3D" parent="Room"]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 30.0109, -1.95907, -83.4443)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Izquierda"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.37, 0.024, 0)
+shape = SubResource("BoxShape3D_ky5bf")
+
+[node name="Pared Superior" type="MeshInstance3D" parent="Room/Izquierda"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -7.286, -0.001, 0)
+mesh = SubResource("QuadMesh_dpesp")
+surface_material_override/0 = SubResource("StandardMaterial3D_4s08b")
+
+[node name="Cuadro1" type="MeshInstance3D" parent="Room/Izquierda/Pared Superior"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, -12.714, -91.954, 0.800997)
+mesh = SubResource("QuadMesh_ngm4w")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_reov4")
+
+[node name="Cuadro 2" type="MeshInstance3D" parent="Room/Izquierda/Pared Superior"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -20.759, -5.33017, 0.800001)
+mesh = SubResource("QuadMesh_reov4")
+surface_material_override/0 = SubResource("StandardMaterial3D_cpg1v")
+
+[node name="Cuadro3" type="MeshInstance3D" parent="Room/Izquierda/Pared Superior"]
+transform = Transform3D(-0.0533991, -0.998573, -1.76993e-07, 0.998573, -0.0533991, -9.44876e-08, 8.49016e-08, -1.81786e-07, 1, -15.775, 30, 0.8)
+mesh = SubResource("QuadMesh_y1c87")
+
+[node name="Cuadro4" type="MeshInstance3D" parent="Room/Izquierda/Pared Superior"]
+transform = Transform3D(-4.37114e-08, -1, -5.01113e-22, 1, -4.37114e-08, 0, 0, 1.37337e-15, 1, -25.511, 30, 0.8)
+mesh = SubResource("QuadMesh_mtbg1")
+surface_material_override/0 = SubResource("StandardMaterial3D_2mne3")
+
+[node name="Pared Inferior" type="MeshInstance3D" parent="Room/Izquierda"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -38.06, 0, 0)
+mesh = SubResource("QuadMesh_oais1")
+surface_material_override/0 = SubResource("StandardMaterial3D_4rdsk")
+
+[node name="Piso" type="StaticBody3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.192, 0, -53.112)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Piso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2108, 0.570038, -30.7702)
+shape = SubResource("BoxShape3D_ky5bf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Piso"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -30.7548)
+mesh = SubResource("QuadMesh_olf15")
+surface_material_override/0 = SubResource("StandardMaterial3D_0gqrd")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -0.00919775, 0.999958, 0, -0.999958, -0.00919775, 0, 62.9044, -183.002)
+light_color = Color(0.917826, 0.905951, 0.845593, 1)
+light_energy = 20.0
+light_indirect_energy = 5.876
+light_volumetric_fog_energy = 0.0
+light_specular = 3.243
+spot_range = 113.108
+spot_attenuation = 0.812252
+spot_angle = 62.14
+spot_angle_attenuation = 4.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -0.00919775, 0.999958, 0, -0.999958, -0.00919775, 0, 62.9044, -141.708)
+light_color = Color(0.917826, 0.905951, 0.845593, 1)
+light_energy = 20.0
+light_indirect_energy = 5.876
+light_volumetric_fog_energy = 0.0
+light_specular = 3.243
+spot_range = 113.108
+spot_attenuation = 0.812252
+spot_angle = 62.14
+spot_angle_attenuation = 4.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -0.00919775, 0.999958, 0, -0.999958, -0.00919775, 0, 62.9044, -97.5895)
+light_color = Color(0.917826, 0.905951, 0.845593, 1)
+light_energy = 20.0
+light_indirect_energy = 5.876
+light_volumetric_fog_energy = 0.0
+light_specular = 3.243
+spot_range = 113.108
+spot_attenuation = 0.812252
+spot_angle = 62.14
+spot_angle_attenuation = 4.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -0.00919775, 0.999958, 0, -0.999958, -0.00919775, 0, 62.9044, -56.295)
+light_color = Color(0.917826, 0.905951, 0.845593, 1)
+light_energy = 20.0
+light_indirect_energy = 5.876
+light_volumetric_fog_energy = 0.0
+light_specular = 3.243
+spot_range = 113.108
+spot_attenuation = 0.812252
+spot_angle = 62.14
+spot_angle_attenuation = 4.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -0.00919775, 0.999958, 0, -0.999958, -0.00919775, 0.0103722, 62.9044, -16.543)
+light_color = Color(0.917826, 0.905951, 0.845593, 1)
+light_energy = 20.0
+light_indirect_energy = 5.876
+light_volumetric_fog_energy = 0.0
+light_specular = 3.243
+spot_range = 113.108
+spot_attenuation = 0.812252
+spot_angle = 62.14
+spot_angle_attenuation = 4.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -0.00919775, 0.999958, 0, -0.999958, -0.00919775, 0.0103722, 62.9044, 24.751)
+light_color = Color(0.917826, 0.905951, 0.845593, 1)
+light_energy = 20.0
+light_indirect_energy = 5.876
+light_volumetric_fog_energy = 0.0
+light_specular = 3.243
+spot_range = 113.108
+spot_attenuation = 0.812252
+spot_angle = 62.14
+spot_angle_attenuation = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 2.26266e-08, -8.44439e-08, -7.70452e-09, 0.939358, 0.342938, 8.70826e-08, 0.342938, -0.939358, -4.35596, 20.8377, -11.6537)
+
+[node name="Interface" parent="." instance=ExtResource("9_fwtqy")]
+offset_left = -3.0
+offset_right = -3.0
