@@ -1,10 +1,13 @@
-# ThirdPersonController
- This addon includes 3rd person perspective locomotion and blockout materials, sky.
+# Pasillo Museo 🎨
 
-https://www.youtube.com/watch?v=_nEolccutWw
+Proyecto interactivo desarrollado con Godot para simular un recorrido por un museo.
 
+## Tecnologías usadas
+- Godot Engine
+- Git & GitHub
 
-3D Model is provided by GDQuest: https://github.com/GDQuest/godot-3d-mannequin
+## Cómo ejecutar
+Abre el proyecto con Godot 4 y ejecuta la escena principal.
 
-This project also uses a character controller and camera script from this repository: 
-https://github.com/pemguin005/Third-Person-Controller--SoulsLIke-Godot4
+## Autor
+Juan Peña - [@juanpena98](https://github.com/juanpena98)
